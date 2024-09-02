@@ -2,7 +2,22 @@
 
 ## REQUIREMENT 🙏
 
-1. `sqlc`
+1. `protoc`
+
+```
+apt install -y protobuf-compiler # linux
+brew install protobuf # macos
+protoc --version
+```
+
+2. `go plugins`
+
+```
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
+
+3. `sqlc`
 
 > sqlc generates golang code from SQL.
 
@@ -23,7 +38,7 @@ sudo snap install sqlc # ubuntu
 make sqlc
 ```
 
-2. `golang-migrate`
+4. `golang-migrate`
 
 > Database migrations using CLI
 
@@ -31,7 +46,12 @@ make sqlc
 brew install golang-migrate
 ```
 
-3. `make`
+5. `make`
+   > Run self-defined script code
+
+```
+brew install make # macos
+```
 
 ## How to use
 
