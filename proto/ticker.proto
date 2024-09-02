@@ -11,6 +11,6 @@ message Ticker {
     string symbol = 2;
     string description = 3;
     string exchange = 4;
-    string currency = 4;
-    google.protobuf.Timestamp created_at = 5;
+    string currency = 5;
+    google.protobuf.Timestamp created_at = 6;
 }
