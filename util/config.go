@@ -13,7 +13,7 @@ type Config struct {
 	Token    TokenConfig
 	Database DatabaseConfig
 	Cache    CacheConfig
-	HTTP     HTTPConfig
+	GRPC     GRPCConfig
 	Log      Log
 }
 
@@ -42,18 +42,18 @@ type CacheConfig struct {
 	Password string
 }
 
-// HTTPConfig struct for HTTP server configuration
-type HTTPConfig struct {
+// GRPCConfig struct for GRPC server configuration
+type GRPCConfig struct {
 	Address string
 }
 
-// HTTPConfig struct for HTTP server configuration
+// GRPCConfig struct for GRPC server configuration
 type Log struct {
 	Level string
 }
 
 func LoadConfig() (config Config, err error) {
-	viper.AddConfigPath("../etc")
+	viper.AddConfigPath("./etc")
 	viper.SetConfigName("local")
 	viper.SetConfigType("yaml")
 

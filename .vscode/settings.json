@@ -1,5 +1,13 @@
 {
-  "cSpell.words": ["pgxpool", "proto", "sqlc", "sslmode", "timestamptz"],
+  "cSpell.words": [
+    "gapi",
+    "Infof",
+    "pgxpool",
+    "proto",
+    "sqlc",
+    "sslmode",
+    "timestamptz"
+  ],
   "protoc": {
     "options": ["--proto_path=protos"]
   }

@@ -1,11 +1,17 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"net"
 	db "rpc-ticker-api/db/sqlc"
+	"rpc-ticker-api/gapi"
+	"rpc-ticker-api/pb"
 	"rpc-ticker-api/util"
 
 	"go.uber.org/zap"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -38,6 +44,30 @@ func runGrpcServer(config util.Config) error {
 		return err
 	}
 	defer cleanupFunc()
+
+	// Grpc server
+	server, err := gapi.NewServer(config, store)
+	if err != nil {
+		logger.Info("cannot new server")
+		return err
+	}
+
+	grpcServer := grpc.NewServer()
+	pb.RegisterTickerServicerServer(grpcServer, server)
+	reflection.Register(grpcServer)
+
+	listener, err := net.Listen("tcp", config.GRPC.Address)
+	if err != nil {
+		logger.Info("cannot create listener")
+		return err
+	}
+
+	fmt.Printf("==> start gRPC at %s ...\n", listener.Addr().String())
+	err = grpcServer.Serve(listener)
+	if err != nil {
+		logger.Info("cannot start gRPC server")
+		return err
+	}
 
 	return nil
 }

@@ -14,7 +14,7 @@ cache:
   port: 6379
   username:
   password:
-http:
-  address: 0.0.0.0:8081
+grpc:
+  address: 0.0.0.0:9090
 log:
   level: info
