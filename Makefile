@@ -40,7 +40,4 @@ proto:
 redis:
 	docker run --name redis -p 6379:6379 -d redis:7-alpine
 
-evans:
-	evans --host localhost --port 9090 -r repl
-
-.PHONY: databaseup databasedown migrateup migratedown migrateup1 migratedown1 sqlc server proto redis evans
+.PHONY: databaseup databasedown migrateup migratedown migrateup1 migratedown1 sqlc server proto redis
