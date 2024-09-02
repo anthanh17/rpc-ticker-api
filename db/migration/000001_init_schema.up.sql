@@ -7,3 +7,5 @@ CREATE TABLE "tickers" (
   "created_at" timestamptz NOT NULL DEFAULT (now()),
   "updated_at" timestamptz NOT NULL DEFAULT (now())
 );
+
+ALTER TABLE tickers ADD CONSTRAINT unique_symbol_exchange UNIQUE (symbol, exchange);

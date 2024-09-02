@@ -2,6 +2,7 @@ package gapi
 
 import (
 	"context"
+	"fmt"
 	db "rpc-ticker-api/db/sqlc"
 	"rpc-ticker-api/pb"
 
@@ -11,6 +12,8 @@ import (
 )
 
 func (s *Server) CreateTicker(ctx context.Context, req *pb.CreateTickerRequest) (*pb.CreateTickerResponse, error) {
+	fmt.Printf("==> request: %v\n", req)
+
 	arg := db.CreateTickerParams{
 		Symbol:      req.GetSymbol(),
 		Description: req.GetDescription(),
