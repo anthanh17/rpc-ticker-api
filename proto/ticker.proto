@@ -2,8 +2,15 @@ syntax = "proto3";
 
 package pb;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "rpc-ticker-api/pb";
 
 message Ticker {
-    
+    uint64 id = 1;
+    string symbol = 2;
+    string description = 3;
+    string exchange = 4;
+    string currency = 4;
+    google.protobuf.Timestamp created_at = 5;
 }

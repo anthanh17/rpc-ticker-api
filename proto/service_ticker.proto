@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package pb;
+
+import "rpc_create_ticker.proto";
+
+option go_package = "rpc-ticker-api/pb";
+
+service Ticker {
+    rpc CreateTicker (CreateTickerRequest) retunrs (CreateTickerResponse) {}
+}
