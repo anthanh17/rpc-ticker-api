@@ -1,4 +1,4 @@
-HOST = localhost # ex: ec2-18-141-12-199.ap-southeast-1.compute.amazonaws.com
+HOST = localhost# ex: ec2-18-141-12-199.ap-southeast-1.compute.amazonaws.com
 DB_URL = postgresql://root:secret@$(HOST):5432/rd?sslmode=disable
 
 # ----------------------------- Setup database ---------------------------------
@@ -11,7 +11,7 @@ databasedown:
 # ------------------- Read schema sql -> crete or update database --------------
 # Migarte database all
 migrateup:
-	migrate -path db/migration -database "" -verbose up
+	migrate -path db/migration -database "$(DB_URL)" -verbose up
 
 migratedown:
 	migrate -path db/migration -database "$(DB_URL)" -verbose down
@@ -40,4 +40,7 @@ proto:
 redis:
 	docker run --name redis -p 6379:6379 -d redis:7-alpine
 
-.PHONY: databaseup databasedown migrateup migratedown migrateup1 migratedown1 sqlc server proto redis
+evans:
+	evans --host localhost --port 9090 -r repl
+
+.PHONY: databaseup databasedown migrateup migratedown migrateup1 migratedown1 sqlc server proto redis evans

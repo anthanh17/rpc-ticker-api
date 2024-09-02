@@ -39,6 +39,7 @@ func InitializeUpDB(databaseConfig util.DatabaseConfig, logger *zap.Logger) (Sto
 		databaseConfig.Database)
 
 	// Connect database
+	fmt.Println("Connect database", connectionString)
 	connPool, err := pgxpool.New(context.Background(), connectionString)
 	if err != nil {
 		logger.Info("cannot connect to db")

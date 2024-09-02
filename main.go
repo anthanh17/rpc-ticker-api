@@ -45,8 +45,8 @@ func runGrpcServer(config util.Config) error {
 	}
 	defer cleanupFunc()
 
-	// Grpc server
-	server, err := gapi.NewServer(config, store)
+	// gRPC server
+	server, err := gapi.NewServer(config, store, logger)
 	if err != nil {
 		logger.Info("cannot new server")
 		return err

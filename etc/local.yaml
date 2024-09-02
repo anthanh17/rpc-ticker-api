@@ -7,7 +7,7 @@ database:
   port: 5432
   username: root
   password: secret
-  database: engineer_pro
+  database: rd
 cache:
   type: redis
   host: 127.0.0.1
