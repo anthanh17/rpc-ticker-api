@@ -53,6 +53,14 @@ brew install golang-migrate
 brew install make # macos
 ```
 
+5. `protoc-gen-openapiv2`
+   > generate sa
+
+```
+go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
+
+```
+
 ## How to use
 
 ```
